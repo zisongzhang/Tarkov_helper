@@ -13,6 +13,7 @@ function App() {
     // <h1>
     //   Hmm... I wonder what the forecast is...
     // </h1>
+    <div>
     <Switch>
         <Route path="/tarkovhelper">
           <Tarkovhelper query={useQueryString().q}/>
@@ -21,6 +22,7 @@ function App() {
           <Redirect to="/tarkovhelper" />
         </Route>
     </Switch>
+    </div>
   );
 }
 
