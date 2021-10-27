@@ -2,55 +2,66 @@
   "Bullets": [
     {
       "id": 0,
-      "caliber": 0.45
+      "caliber": "0.45ACP",
+      "damage":80
     },
     {
       "id": 1,
-      "caliber": 7.62
+      "caliber": "7.62x39mm",
+      "damage":57
     },
     {
       "id": 2,
-      "caliber": 5.56
+      "caliber": "5.56x45mm",
+      "damage":55
     },
     {
       "id":3,
-      "caliber": 12
+      "caliber": "12.7x108mm",
+      "damage":182
     },
     {
       "id":4,
-      "caliber": 9
+      "caliber": "9x19mm",
+      "damage":70
     }
   ],
   "Characters": [
     {
       "id": 0,
       "name": "PMC(player)",
-      "thorax": 80,
+      "head":35,
+      "thorax": 85,
       "stomach": 70,
       "right_arm": 60,
       "right_leg":65,
       "left_arm":60,
-      "left_leg":65
+      "left_leg":65,
+      "total":440
     },
     {
       "id": 1,
-      "name": "Scav",
-      "thorax": 80,
-      "stomach": 70,
-      "right_arm": 60,
-      "right_leg":65,
-      "left_arm":60,
-      "left_leg":65
+      "name": "Scav Raiders",
+      "head":40,
+      "thorax":140,
+      "stomach":120,
+      "right_arm":100,
+      "right_leg":110,
+      "left_arm":100,
+      "left_leg":110,
+      "total":720
     },
     {
       "id": 2,
-      "name": "Scav Raiders",
-      "thorax": 80,
-      "stomach": 70,
-      "right_arm": 60,
-      "right_leg":65,
-      "left_arm":60,
-      "left_leg":65
+      "name": "Reshala",
+      "head":62,
+      "thorax": 138,
+      "stomach": 120,
+      "right_arm": 100,
+      "right_leg":110,
+      "left_arm":100,
+      "left_leg":110,
+      "total":740
     }
   ]
 }
