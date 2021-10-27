@@ -61,14 +61,12 @@ function Tarkovhelper({query}){
                 {ListRepo.map(repo_list => (
                     <ul>
                         <li><p>Head:{repo_list.head}</p></li>
-                        <HealthBar health={repo_list.stomach} damage= "10" name="stomach"/>
+                        <HealthBar health={repo_list.stomach} damage= "70" name="stomach"/>
                     </ul>
                 ))}
             </div>
         </div>
         
-
-
         {/* <HealthBar health="35" damage="25" name="Head"/> */}
         
     </div>
