@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './HealthBar.css'
 
-const HealthBar = () => {
+function HealthBar(props){
+
+    const [health, setHealth] = useState(props.health);
+    const [damage, setDamage] = useState(props.damage);
+    const [name, setName] = useState(props.name);
+
+    const doDamage = () => {
+        setHealth(health => Math.max(health - damage, 0));
+    }
+
+
     return (
         <div className="healthBar">
-            <button>35/35</button>
+            <div>
+                <p></p>
+                <p>{health}/{props.health}</p>
+            </div>
+            <button onClick={doDamage}>{name}</button>
         </div>
     )
 }
