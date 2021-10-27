@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import {useHistory} from 'react-router-dom';
 import fetch from 'isomorphic-unfetch';
 import {css} from '@emotion/react';
-import HealthBar from './components/HealthBar';
+import HealthBar from './components/HealthBar.js';
+
 
 function Tarkovhelper({query}){
     const [inputQuery, setinputQuery] = useState(query || "");
