@@ -9,13 +9,6 @@ function HealthBar(props){
     const [damage, setDamage] = useState(props.damage);
     const [name, setName] = useState(props.name);
 
-    const styles = css`
-    a{
-        color: green;
-    }
-    
-    `;
-
     const doDamage = () => {
         setHealth(health => Math.max(health - damage, 0));
     }
