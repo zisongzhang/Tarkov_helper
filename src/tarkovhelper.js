@@ -10,7 +10,10 @@ function Tarkovhelper(query){
     <div>
         <h1>Hello world</h1>
         <img src="pic3.png"/>
+
+
         <HealthBar health="35" damage="25" name="Head"/>
+        
     </div>
     );
 }
