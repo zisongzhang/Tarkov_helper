@@ -1,7 +1,7 @@
 {
   "name": "master-assignment-3",
   "version": "0.1.0",
-  "description": "Data fetching and component styling",
+  "description": "Tarkov Helper",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.5.0",

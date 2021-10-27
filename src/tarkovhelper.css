@@ -1,10 +1,15 @@
-.mainpage{
+/* .mainpage{
     position: relative;
-}
-.humansystem{
+}*/
+.humansysytem{
     position: relative;
+    width: 26rem;
+    height: 38.2rem;
+    background-image: url("./images/pic3.png");
+    background-repeat: no-repeat;
+    left: 10rem;
 }
-.characterImage{
+/* .characterImage{
     position: relative;
-    left: 30rem;
-}
+    left: 10rem;
+}  */

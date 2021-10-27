@@ -56,11 +56,11 @@ function Tarkovhelper({query}){
             <li><button type = "submit" >Search</button></li>
         </form>
         <div className = "humansysytem">
-            <img className = "characterImage" src="pic3.png"/>
+            {/* <img className = "characterImage" src="pic3.png" /> */}
             <div>
                 {ListRepo.map(repo_list => (
                     <ul>
-                        <li><p>Head:{repo_list.head}</p></li>
+                        {/* <li><p>Head:{repo_list.head}</p></li> */}
                         <HealthBar health={repo_list.stomach} damage= "70" name="stomach"/>
                     </ul>
                 ))}
