@@ -1,8 +1,14 @@
+.playercontainer{
+    position: absolute;
+    z-index: 3;
+    left: 10rem;
+    top:10rem;
+}
 .healthBarContainer{
     width: 7rem;
     margin: 0;
     position: relative;
-    left: 40rem;
+    /* left: 40rem; */
 }
 
 .healthBar{
