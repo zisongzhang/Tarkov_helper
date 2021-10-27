@@ -8,7 +8,7 @@ function Tarkovhelper(query){
     return(
     <div>
         <h1>Hello world</h1>
-        <img src = {`../pic3.png`}/>
+        <img src="pic3.png"/>
     </div>
     );
 }
