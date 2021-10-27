@@ -4,6 +4,7 @@ import {useHistory} from 'react-router-dom';
 import fetch from 'isomorphic-unfetch';
 import {css} from '@emotion/react';
 import HealthBar from './components/HealthBar.js';
+import '../src/tarkovhelper.css'
 
 
 function Tarkovhelper({query}){
@@ -44,7 +45,7 @@ function Tarkovhelper({query}){
         };
     },[query]);
     return(
-    <div>
+    <div className = "mainpage">
         <h1>Hello world</h1>
         <form onSubmit={(e)=>{
                 e.preventDefault();
@@ -54,18 +55,21 @@ function Tarkovhelper({query}){
             {/* <li><input placeholder="Bullets" value={inputQuery} onChange={e => setinputQuery(e.target.value)}/></li> */}
             <li><button type = "submit" >Search</button></li>
         </form>
-        <div>
-            {ListRepo.map(repo_list => (
-                <ul>
-                    <li><p>Head:{repo_list.head}</p></li>
-                    <HealthBar health={repo_list.head} damage= {repo_list.head} name="Head"/>
-                </ul>
-            ))}
+        <div className = "humansysytem">
+            <img className = "characterImage" src="pic3.png"/>
+            <div>
+                {ListRepo.map(repo_list => (
+                    <ul>
+                        <li><p>Head:{repo_list.head}</p></li>
+                        <HealthBar health={repo_list.stomach} damage= "10" name="stomach"/>
+                    </ul>
+                ))}
+            </div>
         </div>
-        <img src="pic3.png"/>
+        
 
 
-        <HealthBar health="35" damage="25" name="Head"/>
+        {/* <HealthBar health="35" damage="25" name="Head"/> */}
         
     </div>
     );

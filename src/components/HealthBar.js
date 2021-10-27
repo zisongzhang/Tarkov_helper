@@ -14,12 +14,14 @@ function HealthBar(props){
     }
 
     return (
-        <div className="healthBarContainer">
+        <div className= "playercontainer">
+            <div className="healthBarContainer">
             {/* <p className="healthBar">{health} / {props.health}</p>
             <p className="healthBarB">1</p> */}
             <progress id="health" value={health} max={maxHealth}>{health} / {props.health}</progress>
             <p className="healthBar">{health} / {props.health}</p>
             <button className="healthBarBtn" onClick={doDamage}>{name}</button>
+            </div>
         </div>
     )
 }
