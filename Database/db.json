@@ -1,0 +1,56 @@
+{
+  "Bullets": [
+    {
+      "id": 0,
+      "caliber": 0.45
+    },
+    {
+      "id": 1,
+      "caliber": 7.62
+    },
+    {
+      "id": 2,
+      "caliber": 5.56
+    },
+    {
+      "id":3,
+      "caliber": 12
+    },
+    {
+      "id":4,
+      "caliber": 9
+    }
+  ],
+  "Characters": [
+    {
+      "id": 0,
+      "name": "PMC(player)",
+      "thorax": 80,
+      "stomach": 70,
+      "right_arm": 60,
+      "right_leg":65,
+      "left_arm":60,
+      "left_leg":65
+    },
+    {
+      "id": 1,
+      "name": "Scav",
+      "thorax": 80,
+      "stomach": 70,
+      "right_arm": 60,
+      "right_leg":65,
+      "left_arm":60,
+      "left_leg":65
+    },
+    {
+      "id": 2,
+      "name": "Scav Raiders",
+      "thorax": 80,
+      "stomach": 70,
+      "right_arm": 60,
+      "right_leg":65,
+      "left_arm":60,
+      "left_leg":65
+    }
+  ]
+}

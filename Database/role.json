@@ -1,0 +1,14 @@
+{
+    "Roles": [
+      {
+        "id": 1,
+        "head": 35,
+        "thorax": 80,
+        "stomach": 70,
+        "right_arm": 60,
+        "right_leg":65,
+        "left_arm":60,
+        "left_leg":65
+      }
+    ]
+}
