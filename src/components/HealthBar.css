@@ -1,0 +1,27 @@
+.healthBarContainer{
+    width: 7rem;
+    margin: 0;
+    position: relative;
+    left: 40rem;
+}
+
+.healthBar{
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: .05rem;
+    left: 30%;
+}
+
+
+.healthBarBtn{
+    margin: 0;
+    width: 7rem;
+}
+
+#health{
+    margin: 0;
+    background-color: green;
+    color: black;
+    width: 7rem;
+}
