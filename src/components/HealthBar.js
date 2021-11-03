@@ -1,9 +1,18 @@
+/** @jsxImportSource @emotion/react */
 import React, { useState } from 'react';
 import {css} from '@emotion/react';
 import './HealthBar.css'
 
+
 function HealthBar(props){
 
+    const healthBarContainer = css`
+        width: 7rem;
+        margin: 0;
+        position: absolute;
+        top: ${props.top}rem;
+        left: ${props.left}rem;
+    `;
     const [health, setHealth] = useState(props.health);
     const [maxHealth, setMaxHealth] = useState(props.health);
     const [damage, setDamage] = useState(props.damage);
@@ -15,7 +24,7 @@ function HealthBar(props){
 
     return (
         // <div className= "playercontainer">
-        <div className="healthBarContainer">
+        <div css = {healthBarContainer}>
             {/* <p className="healthBar">{health} / {props.health}</p>
             <p className="healthBarB">1</p> */}
             <progress id="health" value={health} max={maxHealth}>{health} / {props.health}</progress>
