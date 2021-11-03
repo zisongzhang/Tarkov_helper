@@ -52,7 +52,7 @@ function Tarkovhelper({query}){
                 history.push(`?q=${inputQuery}`);
         }}>
             <li><input placeholder="Charaters" value={inputQuery} onChange={e => setinputQuery(e.target.value)}/></li>
-            {/* <li><input placeholder="Bullets" value={inputQuery} onChange={e => setinputQuery(e.target.value)}/></li> */}
+            <li><input placeholder="Bullets" value={inputQuery} onChange={e => setinputQuery(e.target.value)}/></li>
             <li><button type = "submit" >Search</button></li>
         </form>
         <div className = "humansysytem">
