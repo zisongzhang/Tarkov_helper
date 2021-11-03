@@ -61,8 +61,15 @@ function Tarkovhelper({query}){
                 {ListRepo.map(repo_list => (
                     <ul>
                         {/* <li><p>Head:{repo_list.head}</p></li> */}
-                        <HealthBar left = "14" top = "0" health={repo_list.stomach} damage= "70" name="Head"/>
-                        <HealthBar left = "14" top = "15" health={repo_list.stomach} damage= "70" name="Stomach"/>
+                        <HealthBar left = "21" top = "0" health={repo_list.head} damage= "70" name="Head"/>
+                        <HealthBar left = "14" top = "6" health={repo_list.thorax} damage= "70" name="Thorax"/>
+                        <HealthBar left = "14" top = "12" health={repo_list.stomach} damage= "70" name="Stomach"/>
+
+
+                        <HealthBar left = "2.8" top = "12" health={repo_list.right_arm} damage= "70" name="Right arm"/>
+                        <HealthBar left = "5" top = "21.5" health={repo_list.right_leg} damage= "70" name="Right leg"/>
+                        <HealthBar left = "26" top = "12" health={repo_list.left_arm} damage= "70" name="Left arm"/>
+                        <HealthBar left = "23" top = "21.5" health={repo_list.left_leg} damage= "70" name="Left leg"/>
                     </ul>
                 ))}
             </div>
