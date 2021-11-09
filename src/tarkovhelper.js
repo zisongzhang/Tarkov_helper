@@ -34,6 +34,7 @@ function Tarkovhelper({query}){
             if (!ignore){
                 console.log("responsebody: ", responseBody);
                 setListRepo(responseBody || []);
+                console.log("ListRepo", ListRepo);
             }
         }
         if (query){
@@ -43,6 +44,7 @@ function Tarkovhelper({query}){
             controller.abort();
             ignore = true;
         };
+        // console.log(ListRepo);
     },[query]);
     return(
     <div className = "mainpage">
@@ -59,7 +61,7 @@ function Tarkovhelper({query}){
             {/* <img className = "characterImage" src="pic3.png" /> */}
             <div>
                 {ListRepo.map(repo_list => (
-                    <ul>
+                    <ul key={repo_list.id}>
                         {/* <li><p>Head:{repo_list.head}</p></li> */}
                         <HealthBar left = "21" top = "0" health={repo_list.head} damage= "70" name="Head"/>
                         <HealthBar left = "14" top = "6" health={repo_list.thorax} damage= "70" name="Thorax"/>
