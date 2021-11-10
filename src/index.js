@@ -10,6 +10,9 @@ const globalStyle = css`
   body{
     font-family: 'Source Sans Pro', sans-serif;
   }
+  body{
+    margin: 0px;
+  }
 `;
 
 ReactDOM.render(
