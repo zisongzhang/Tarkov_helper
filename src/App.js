@@ -1,7 +1,9 @@
 import React from 'react';
 import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
+import {css} from '@emotion/react';
 
+import Header from './components/Header'
 import Tarkovhelper from './tarkovhelper';
 
 function useQueryString() {
@@ -9,11 +11,19 @@ function useQueryString() {
 }
 
 function App() {
+
+  const homeContainer = css`
+        padding: 0px;
+        margin: 0px;
+        border: 0;
+    `;
+
   return (
     // <h1>
     //   Hmm... I wonder what the forecast is...
     // </h1>
-    <div>
+    <div css={homeContainer}>
+    <Header />
     <Switch>
         <Route path="/tarkovhelper">
           <Tarkovhelper query={useQueryString().q}/>

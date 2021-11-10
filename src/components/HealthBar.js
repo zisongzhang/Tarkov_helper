@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState } from 'react';
 import {css} from '@emotion/react';
-import './HealthBar.css'
+import './HealthBar.css';
 
 
 function HealthBar(props){
@@ -18,15 +18,19 @@ function HealthBar(props){
     const [damage, setDamage] = useState(props.damage);
     const [name, setName] = useState(props.name);
 
-    const doDamage = () => {
+    const doDamage = (part) => {
         setHealth(health => Math.max(health - damage, 0));
+        
+        const tempListRepo = [...props.ListRepo];
+        tempListRepo[0][part] = health;
+        props.setListRepo(tempListRepo);
     }
 
     return (
         <div css = {healthBarContainer}>
             <progress id="health" value={health} max={maxHealth}>{health} / {props.health}</progress>
             <p className="healthBar">{health} / {props.health}</p>
-            <button className="healthBarBtn" onClick={doDamage}>{name}</button>
+            <button className="healthBarBtn" onClick={()=>doDamage(name)}>{name}</button>
         </div>
     )
 }

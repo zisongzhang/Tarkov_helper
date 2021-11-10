@@ -11,6 +11,10 @@ function Tarkovhelper({query}){
     const [inputQuery, setinputQuery] = useState(query || "");
     const [ListRepo, setListRepo] = useState([]);
     const history = useHistory();
+
+
+    const [damage, setDamage] = useState(70);
+
     useEffect(()=>{
         let ignore = false;
         const controller = new AbortController();  // set controll
@@ -34,7 +38,6 @@ function Tarkovhelper({query}){
             if (!ignore){
                 console.log("responsebody: ", responseBody);
                 setListRepo(responseBody || []);
-                console.log("ListRepo", ListRepo);
             }
         }
         if (query){
@@ -43,12 +46,23 @@ function Tarkovhelper({query}){
         return () => {
             controller.abort();
             ignore = true;
+            console.log("ListRepo", ListRepo);
         };
         // console.log(ListRepo);
     },[query]);
+
+
+    const testDmg = (part) =>{
+        const tempListRepo = [...ListRepo];
+      	tempListRepo[0][part] = 10;
+        setListRepo(tempListRepo);
+    }
+
+
     return(
     <div className = "mainpage">
-        <h1>Hello world</h1>
+        {console.log("ListRepo Div", ListRepo)}
+        {/* <h1>Hello world</h1> */}
         <form onSubmit={(e)=>{
                 e.preventDefault();
                 history.push(`?q=${inputQuery}`);
@@ -56,28 +70,23 @@ function Tarkovhelper({query}){
             <li><input placeholder="Charaters" value={inputQuery} onChange={e => setinputQuery(e.target.value)}/></li>
             <li><input placeholder="Bullets" value={inputQuery} onChange={e => setinputQuery(e.target.value)}/></li>
             <li><button type = "submit" >Search</button></li>
+            <li><button onClick={()=>testDmg("head")}>testDmg</button></li>
         </form>
         <div className = "humansysytem">
-            {/* <img className = "characterImage" src="pic3.png" /> */}
             <div>
                 {ListRepo.map(repo_list => (
                     <ul key={repo_list.id}>
-                        {/* <li><p>Head:{repo_list.head}</p></li> */}
-                        <HealthBar left = "21" top = "0" health={repo_list.head} damage= "70" name="Head"/>
-                        <HealthBar left = "14" top = "6" health={repo_list.thorax} damage= "70" name="Thorax"/>
+                        <HealthBar left = "21" top = "0" health = {repo_list.head} damage = "70" name="head" ListRepo = {ListRepo} setListRepo={setListRepo}/>
+                        {/* <HealthBar left = "14" top = "6" health={repo_list.thorax} damage= "70" name="Thorax"/>
                         <HealthBar left = "14" top = "12" health={repo_list.stomach} damage= "70" name="Stomach"/>
-
-
                         <HealthBar left = "2.8" top = "12" health={repo_list.right_arm} damage= "70" name="Right arm"/>
                         <HealthBar left = "5" top = "21.5" health={repo_list.right_leg} damage= "70" name="Right leg"/>
                         <HealthBar left = "26" top = "12" health={repo_list.left_arm} damage= "70" name="Left arm"/>
-                        <HealthBar left = "23" top = "21.5" health={repo_list.left_leg} damage= "70" name="Left leg"/>
+                        <HealthBar left = "23" top = "21.5" health={repo_list.left_leg} damage= "70" name="Left leg"/> */}
                     </ul>
                 ))}
             </div>
         </div>
-
-        {/* <HealthBar health="35" damage="25" name="Head"/> */}
         
     </div>
     );
