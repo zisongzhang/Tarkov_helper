@@ -40,6 +40,7 @@ function Tarkovhelper({query, query_bullet}){
                 console.log("responsebody: ", responseBody);
                 setIsLoading(false);
                 setListRepo(responseBody || []);
+                console.log("ListRepo", ListRepo);
             }
         }
         const bullet_controller = new AbortController();
@@ -75,8 +76,10 @@ function Tarkovhelper({query, query_bullet}){
             controller.abort();
             ignore = true;
         };
-    
     },[query, query_bullet]);
+
+        // console.log(ListRepo);
+
     return(
     <div className = "mainpage">
         <h1>Hello world</h1>
@@ -101,7 +104,7 @@ function Tarkovhelper({query, query_bullet}){
                 <div>
                     {/* {console.log("damage: ", BulletListRepo[0].damage)} */}
                 {ListRepo.map(repo_list => (
-                    <ul>
+                    <ul key={repo_list.id}>
                         {/* <li><p>Head:{repo_list.head}</p></li> */}
                         <HealthBar left = "21" top = "0" health={repo_list.head} damage= "20" name="Head"/>
                         <HealthBar left = "14" top = "6" health={repo_list.thorax} damage= "20" name="Thorax"/>
