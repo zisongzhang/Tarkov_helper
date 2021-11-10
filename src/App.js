@@ -10,6 +10,10 @@ function useQueryString() {
   return queryString.parse(useLocation().search);
 }
 
+function useQueryString2() {
+  return queryString.parse(useLocation().search);
+}
+
 function App() {
 
   const homeContainer = css`
@@ -26,7 +30,8 @@ function App() {
     <Header />
     <Switch>
         <Route path="/tarkovhelper">
-          <Tarkovhelper query={useQueryString().q}/>
+          {console.log("useQueryString(): ", useQueryString())}
+          <Tarkovhelper query={useQueryString().character} query_bullet={useQueryString().bullet}/>
         </Route>
         <Route exact path="/">
           <Redirect to="/tarkovhelper" />
