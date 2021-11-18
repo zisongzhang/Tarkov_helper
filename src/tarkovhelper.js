@@ -17,8 +17,9 @@ function Tarkovhelper({query, query_bullet}){
     const [ isBulletLoading, setIsBulletLoading ] = useState(false);
     const history = useHistory();
 
+    // body health
+    const [maxHeadHealth, setMaxHeadHealth] = useState(0); 
 
-    const [damage, setDamage] = useState(70);
 
     useEffect(()=>{
         let ignore = false;
@@ -90,7 +91,6 @@ function Tarkovhelper({query, query_bullet}){
         setListRepo(tempListRepo);
     }
 
-
     return(
     <div className = "mainpage">
         {console.log("ListRepo Div", ListRepo)}
@@ -111,22 +111,26 @@ function Tarkovhelper({query, query_bullet}){
             {console.log("isLoading: ", isLoading)}
             {console.log("isBulletLoading: ", isBulletLoading)}
             {console.log("condition: ", (isLoading && isBulletLoading))}
+
+                    
+            
             {/* {console.log("damage: ", BulletListRepo[0].damage)} */}
             {(isLoading || isBulletLoading) ? (<h1> loading</h1>) : (
                 <div>
-                    {BulletListRepo.length > 0 ? (
+                    {(BulletListRepo.length > 0 && maxListRepo.length > 0) ? (
                         <div>
-                            {console.log("damage: ", BulletListRepo[0].damage)}
+                        {console.log("======================", maxListRepo[0].head)}
+                        {console.log("damage: ", BulletListRepo[0].damage)}
                         {ListRepo.map(repo_list => (
-                        <ul key={repo_list.id}>
-                        <HealthBar left = "21" top = "0" maxHealth={repo_list.head} health = {repo_list.head} damage = {BulletListRepo[0].damage} name="head" ListRepo = {ListRepo} setListRepo={setListRepo}/>
-                        {/* <HealthBar left = "14" top = "6" health={repo_list.thorax} damage= "70" name="Thorax"/>
-                        <HealthBar left = "14" top = "12" health={repo_list.stomach} damage= "70" name="Stomach"/>
-                        <HealthBar left = "2.8" top = "12" health={repo_list.right_arm} damage= "70" name="Right arm"/>
-                        <HealthBar left = "5" top = "21.5" health={repo_list.right_leg} damage= "70" name="Right leg"/>
-                        <HealthBar left = "26" top = "12" health={repo_list.left_arm} damage= "70" name="Left arm"/>
-                        <HealthBar left = "23" top = "21.5" health={repo_list.left_leg} damage= "70" name="Left leg"/> */}
-                        </ul>
+                            <ul key={repo_list.id}>
+                            <HealthBar left = "21" top = "0" maxHealth={maxListRepo[0].head} health = {repo_list.head} damage = {BulletListRepo[0].damage} name="head" ListRepo = {ListRepo} setListRepo={setListRepo}/>
+                            <HealthBar left = "14" top = "6" maxHealth={maxListRepo[0].thorax} health={repo_list.thorax} damage= {BulletListRepo[0].damage} name="thorax" ListRepo = {ListRepo} setListRepo={setListRepo}/>
+                            <HealthBar left = "14" top = "12" maxHealth={maxListRepo[0].stomach} health={repo_list.stomach} damage= {BulletListRepo[0].damage} name="stomach" ListRepo = {ListRepo} setListRepo={setListRepo}/>
+                            <HealthBar left = "2.8" top = "12" maxHealth={maxListRepo[0].right_arm} health={repo_list.right_arm} damage= {BulletListRepo[0].damage} name="right_arm" ListRepo = {ListRepo} setListRepo={setListRepo}/>
+                            <HealthBar left = "5" top = "21.5" maxHealth={maxListRepo[0].right_leg} health={repo_list.right_leg} damage= {BulletListRepo[0].damage} name="right_leg" ListRepo = {ListRepo} setListRepo={setListRepo}/>
+                            <HealthBar left = "26" top = "12" maxHealth={maxListRepo[0].left_arm} health={repo_list.left_arm} damage= {BulletListRepo[0].damage} name="left_arm" ListRepo = {ListRepo} setListRepo={setListRepo}/>
+                            <HealthBar left = "23" top = "21.5" maxHealth={maxListRepo[0].left_leg} health={repo_list.left_leg} damage= {BulletListRepo[0].damage} name="left_leg" ListRepo = {ListRepo} setListRepo={setListRepo}/>
+                            </ul>
                         ))}
                         </div>
                     ):(<h1> loading</h1>)
