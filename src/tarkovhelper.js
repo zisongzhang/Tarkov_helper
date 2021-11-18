@@ -11,6 +11,7 @@ function Tarkovhelper({query, query_bullet}){
     const [inputQuery, setinputQuery] = useState(query || "");
     const [inputBulletQuery, setinputBulletQuery] = useState(query_bullet || "");
     const [ListRepo, setListRepo] = useState([]); // for charater
+    const [maxListRepo, setMaxListRepo] = useState([]); // store all the max health
     const [BulletListRepo, setBulletListRepo] = useState([]); // for bullet
     const [ isLoading, setIsLoading ] = useState(false);
     const [ isBulletLoading, setIsBulletLoading ] = useState(false);
@@ -44,6 +45,7 @@ function Tarkovhelper({query, query_bullet}){
                 console.log("responsebody: ", responseBody);
                 setIsLoading(false);
                 setListRepo(responseBody || []);
+                setMaxListRepo(responseBody || []);
             }
         }
         const bullet_controller = new AbortController();
@@ -68,7 +70,7 @@ function Tarkovhelper({query, query_bullet}){
             if (!ignore){
                 console.log("responseBulletBody: ", responseBulletBody);
                 setIsBulletLoading(false);
-                setBulletListRepo(responseBulletBody || []);
+                setBulletListRepo(responseBulletBody || []);    // store bullet
             }
         }
         if (query || query_bullet){
@@ -110,20 +112,25 @@ function Tarkovhelper({query, query_bullet}){
             {console.log("isBulletLoading: ", isBulletLoading)}
             {console.log("condition: ", (isLoading && isBulletLoading))}
             {/* {console.log("damage: ", BulletListRepo[0].damage)} */}
-            {(isLoading && isBulletLoading) ? (<h1> loading</h1>) : (
+            {(isLoading || isBulletLoading) ? (<h1> loading</h1>) : (
                 <div>
-                    {/* {console.log("damage: ", BulletListRepo[0].damage)} */}
-                {ListRepo.map(repo_list => (
-                    <ul key={repo_list.id}>
-                        <HealthBar left = "21" top = "0" health = {repo_list.head} damage = "70" name="head" ListRepo = {ListRepo} setListRepo={setListRepo}/>
+                    {BulletListRepo.length > 0 ? (
+                        <div>
+                            {console.log("damage: ", BulletListRepo[0].damage)}
+                        {ListRepo.map(repo_list => (
+                        <ul key={repo_list.id}>
+                        <HealthBar left = "21" top = "0" maxHealth={repo_list.head} health = {repo_list.head} damage = {BulletListRepo[0].damage} name="head" ListRepo = {ListRepo} setListRepo={setListRepo}/>
                         {/* <HealthBar left = "14" top = "6" health={repo_list.thorax} damage= "70" name="Thorax"/>
                         <HealthBar left = "14" top = "12" health={repo_list.stomach} damage= "70" name="Stomach"/>
                         <HealthBar left = "2.8" top = "12" health={repo_list.right_arm} damage= "70" name="Right arm"/>
                         <HealthBar left = "5" top = "21.5" health={repo_list.right_leg} damage= "70" name="Right leg"/>
                         <HealthBar left = "26" top = "12" health={repo_list.left_arm} damage= "70" name="Left arm"/>
                         <HealthBar left = "23" top = "21.5" health={repo_list.left_leg} damage= "70" name="Left leg"/> */}
-                    </ul>
-                ))}
+                        </ul>
+                        ))}
+                        </div>
+                    ):(<h1> loading</h1>)
+                    }
                 </div>
             )}
             </div>
