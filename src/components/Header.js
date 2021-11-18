@@ -6,18 +6,17 @@ const Header = () => {
     const [ifDisplay, setIfDisplay] = useState(false); 
     const [timer, setTimer] = useState(0);
 
-
     function handleDisplay(){
         setIfDisplay(!ifDisplay);
     }
 
-    function timeOut(){
+    function timeOut(){     // reset timer
         setIfDisplay(false);
         clearTimeout(timer);
     }
 
     function handleOnMouseLeaveDelay(){
-        timer = setTimeout(timeOut, 100);
+        setTimer(setTimeout(timeOut, 500));
     }
 
 
@@ -34,13 +33,18 @@ const Header = () => {
                     // onMouseLeave={() => handleDisplay()}
                     onMouseEnter={() => setIfDisplay(true)}
                     onMouseOver={() => setIfDisplay(true)}
-                    onMouseLeave={() => handleOnMouseLeaveDelay}
+                    onMouseLeave={() => handleOnMouseLeaveDelay()}
                     open={ifDisplay}
                     >
                     Streamer
                 </button>
                 { ifDisplay && (
-                <div className="dropdownMenu">
+                <div className="dropdownMenu"
+                     onMouseEnter={() => setIfDisplay(true)}
+                     onMouseOver={() => setIfDisplay(true)}
+                     onMouseLeave={() => handleOnMouseLeaveDelay()}
+
+                >
                     <a className="headerLink" href="https://www.youtube.com/c/AquaFPS">AquaFPS</a>
                     <a className="headerLink" href="https://www.youtube.com/c/LVNDMARK">LVNDMARK</a>
                 </div>
