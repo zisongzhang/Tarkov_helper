@@ -13,12 +13,14 @@ function Tarkovhelper({query, query_bullet}){
     const [ListRepo, setListRepo] = useState([]); // for charater
     const [maxListRepo, setMaxListRepo] = useState([]); // store all the max health
     const [BulletListRepo, setBulletListRepo] = useState([]); // for bullet
-    const [ isLoading, setIsLoading ] = useState(false);
-    const [ isBulletLoading, setIsBulletLoading ] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isBulletLoading, setIsBulletLoading ] = useState(false);
     const history = useHistory();
 
-    // body health
-    const [maxHeadHealth, setMaxHeadHealth] = useState(0); 
+    // check death
+    const [ifVital, setIfVital] = useState(true);
+    const [ifDead, setIfDead] = useState(false);
+    
 
 
     useEffect(()=>{
@@ -85,16 +87,21 @@ function Tarkovhelper({query, query_bullet}){
         };
     },[query, query_bullet]);
 
-    const testDmg = (part) =>{
-        const tempListRepo = [...ListRepo];
-      	tempListRepo[0][part] = 10;
-        setListRepo(tempListRepo);
+
+    const test = () => {
+
+        // if(ifDead === true){
+        //     console.log("KIA=====================");
+        // }
+
+        console.log("KIA=====================");
+        
     }
+
 
     return(
     <div className = "mainpage">
         {console.log("ListRepo Div", ListRepo)}
-        {/* <h1>Hello world</h1> */}
         <form onSubmit={(e)=>{
                 e.preventDefault();
                 history.push(`?character=${inputQuery}&bullet=${inputBulletQuery}`);
@@ -103,7 +110,7 @@ function Tarkovhelper({query, query_bullet}){
             <li><input placeholder="Charaters" value={inputQuery} onChange={e => setinputQuery(e.target.value)}/></li>
             <li><input placeholder="Bullets" value={inputBulletQuery} onChange={e => setinputBulletQuery(e.target.value)}/></li>
             <li><button type = "submit" >Search</button></li>
-            <li><button onClick={()=>testDmg("head")}>testDmg</button></li>
+            
         </form>
         {/* {console.log("damage: ", BulletListRepo[0].damage)} */}
         <div className = "humansysytem">
@@ -119,17 +126,101 @@ function Tarkovhelper({query, query_bullet}){
                 <div>
                     {(BulletListRepo.length > 0 && maxListRepo.length > 0) ? (
                         <div>
-                        {console.log("======================", maxListRepo[0].head)}
+                        
                         {console.log("damage: ", BulletListRepo[0].damage)}
                         {ListRepo.map(repo_list => (
                             <ul key={repo_list.id}>
-                            <HealthBar left = "21" top = "0" maxHealth={maxListRepo[0].head} health = {repo_list.head} damage = {BulletListRepo[0].damage} name="head" ListRepo = {ListRepo} setListRepo={setListRepo}/>
-                            <HealthBar left = "14" top = "6" maxHealth={maxListRepo[0].thorax} health={repo_list.thorax} damage= {BulletListRepo[0].damage} name="thorax" ListRepo = {ListRepo} setListRepo={setListRepo}/>
-                            <HealthBar left = "14" top = "12" maxHealth={maxListRepo[0].stomach} health={repo_list.stomach} damage= {BulletListRepo[0].damage} name="stomach" ListRepo = {ListRepo} setListRepo={setListRepo}/>
-                            <HealthBar left = "2.8" top = "12" maxHealth={maxListRepo[0].right_arm} health={repo_list.right_arm} damage= {BulletListRepo[0].damage} name="right_arm" ListRepo = {ListRepo} setListRepo={setListRepo}/>
-                            <HealthBar left = "5" top = "21.5" maxHealth={maxListRepo[0].right_leg} health={repo_list.right_leg} damage= {BulletListRepo[0].damage} name="right_leg" ListRepo = {ListRepo} setListRepo={setListRepo}/>
-                            <HealthBar left = "26" top = "12" maxHealth={maxListRepo[0].left_arm} health={repo_list.left_arm} damage= {BulletListRepo[0].damage} name="left_arm" ListRepo = {ListRepo} setListRepo={setListRepo}/>
-                            <HealthBar left = "23" top = "21.5" maxHealth={maxListRepo[0].left_leg} health={repo_list.left_leg} damage= {BulletListRepo[0].damage} name="left_leg" ListRepo = {ListRepo} setListRepo={setListRepo}/>
+                            <HealthBar left = "21" top = "0" 
+                                maxHealth = {maxListRepo[0].head} 
+                                health = {repo_list.head} 
+                                damage = {BulletListRepo[0].damage} 
+                                name="head" ListRepo = {ListRepo} 
+                                setListRepo = {setListRepo}
+
+
+                                test = {test}
+                                ifDead = {ifDead}
+                                setIfDead = {setIfDead}
+                                />
+
+                            <HealthBar left = "14" top = "6" 
+                                maxHealth = {maxListRepo[0].thorax} 
+                                health ={repo_list.thorax} 
+                                damage = {BulletListRepo[0].damage} 
+                                name="thorax" 
+                                ListRepo = {ListRepo} 
+                                setListRepo = {setListRepo}
+
+                                test = {test}
+                                ifDead = {ifDead}
+                                setIfDead = {setIfDead}
+                                />
+
+                            <HealthBar left = "14" top = "12" 
+                                maxHealth={maxListRepo[0].stomach} 
+                                health = {repo_list.stomach} 
+                                damage = {BulletListRepo[0].damage} 
+                                name="stomach" 
+                                ListRepo = {ListRepo} 
+                                setListRepo = {setListRepo}
+
+                                test = {test}
+                                ifDead = {ifDead}
+                                setIfDead = {setIfDead}
+                                />
+
+                            <HealthBar left = "2.8" top = "12" 
+                                maxHealth = {maxListRepo[0].right_arm} 
+                                health = {repo_list.right_arm} 
+                                damage = {BulletListRepo[0].damage} 
+                                name = "right_arm" 
+                                ListRepo = {ListRepo} 
+                                setListRepo = {setListRepo}
+                                
+                                test = {test}
+                                ifDead = {ifDead}
+                                setIfDead = {setIfDead}
+                                />
+
+                            <HealthBar left = "5" top = "21.5" 
+                                maxHealth = {maxListRepo[0].right_leg} 
+                                health = {repo_list.right_leg} 
+                                damage = {BulletListRepo[0].damage} 
+                                name = "right_leg" 
+                                ListRepo = {ListRepo} 
+                                setListRepo = {setListRepo}
+                                
+                                test = {test}
+                                ifDead = {ifDead}
+                                setIfDead = {setIfDead}
+                                />
+
+                            <HealthBar left = "26" top = "12" 
+                            maxHealth = {maxListRepo[0].left_arm} 
+                            health = {repo_list.left_arm} 
+                            damage = {BulletListRepo[0].damage} 
+                            name = "left_arm" 
+                            ListRepo = {ListRepo} 
+                            setListRepo = {setListRepo}
+                            
+                            test = {test}
+                            ifDead = {ifDead}
+                            setIfDead = {setIfDead}
+                            />
+
+                            <HealthBar left = "23" top = "21.5" 
+                            maxHealth = {maxListRepo[0].left_leg} 
+                            health = {repo_list.left_leg} 
+                            damage = {BulletListRepo[0].damage} 
+                            name = "left_leg" 
+                            ListRepo = {ListRepo} 
+                            setListRepo = {setListRepo}
+                            
+                            test = {test}
+                            ifDead = {ifDead}
+                            setIfDead = {setIfDead}
+                            />
+
                             </ul>
                         ))}
                         </div>
