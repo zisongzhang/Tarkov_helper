@@ -1,10 +1,11 @@
 /**@jsxImportSource @emotion/react */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {useHistory} from 'react-router-dom';
 import fetch from 'isomorphic-unfetch';
 import {css} from '@emotion/react';
 import HealthBar from './components/HealthBar.js';
 import '../src/tarkovhelper.css'
+import DataListInput from "react-datalist-input";
 
 
 function Tarkovhelper({query, query_bullet}){
@@ -16,6 +17,10 @@ function Tarkovhelper({query, query_bullet}){
     const [ isLoading, setIsLoading ] = useState(false);
     const [ isBulletLoading, setIsBulletLoading ] = useState(false);
     const history = useHistory();
+    // const [item, setItem] = useState();
+    // const onSelect = useCallback((selectedItem) => {
+    //     console.log("selectedItem", selectedItem);
+    //   }, []);
 
     // body health
     const [maxHeadHealth, setMaxHeadHealth] = useState(0); 
@@ -101,6 +106,14 @@ function Tarkovhelper({query, query_bullet}){
                 // history.push(`?bullet=${inputBulletQuery}`);
         }}>
             <li><input placeholder="Charaters" value={inputQuery} onChange={e => setinputQuery(e.target.value)}/></li>
+                {/* <option name="male"> male</option> */}
+                {/* </select>
+                </li> */}
+                {/* <DataListInput
+                placeholder="Select an option from the drop down menu..."
+                items={"iphut","hhhh"}
+                onSelect={onSelect}
+                /> */}
             <li><input placeholder="Bullets" value={inputBulletQuery} onChange={e => setinputBulletQuery(e.target.value)}/></li>
             <li><button type = "submit" >Search</button></li>
             <li><button onClick={()=>testDmg("head")}>testDmg</button></li>
