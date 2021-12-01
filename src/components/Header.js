@@ -25,24 +25,28 @@ const Header = () => {
             <img src="/OSUicon.png" alt=""/>
             <a className="headerLink" href="https://escapefromtarkov.fandom.com/wiki/Escape_from_Tarkov_Wiki">Wiki</a>
 
-            <div className="dropDowncontainer">
+            <div className="dropDowncontainer"
+                    onMouseEnter={() => setIfDisplay(true)}
+                    onMouseOver={() => setIfDisplay(true)}
+                    onMouseLeave={() => handleOnMouseLeaveDelay()}
+                    >
                 <button 
                     className="dropDownBtn"
                     onClick={handleDisplay}
                     // onMouseEnter={() => handleDisplay()}
                     // onMouseLeave={() => handleDisplay()}
-                    onMouseEnter={() => setIfDisplay(true)}
-                    onMouseOver={() => setIfDisplay(true)}
-                    onMouseLeave={() => handleOnMouseLeaveDelay()}
+                    // onMouseEnter={() => setIfDisplay(true)}
+                    // onMouseOver={() => setIfDisplay(true)}
+                    // onMouseLeave={() => handleOnMouseLeaveDelay()}
                     open={ifDisplay}
                     >
                     Streamer
                 </button>
                 { ifDisplay && (
                 <div className="dropdownMenu"
-                     onMouseEnter={() => setIfDisplay(true)}
-                     onMouseOver={() => setIfDisplay(true)}
-                     onMouseLeave={() => handleOnMouseLeaveDelay()}
+                    //  onMouseEnter={() => setIfDisplay(true)}
+                    //  onMouseOver={() => setIfDisplay(true)}
+                    //  onMouseLeave={() => handleOnMouseLeaveDelay()}
 
                 >
                     <a className="headerLink" href="https://www.youtube.com/c/AquaFPS">AquaFPS</a>

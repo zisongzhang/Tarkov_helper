@@ -92,6 +92,9 @@ function Tarkovhelper({query, query_bullet}){
         };
     },[query, query_bullet]);
 
+    function User(props) {  
+        return [{...props[0], left_leg: 0}];
+    }
 
     const test = () => {
 
@@ -100,7 +103,12 @@ function Tarkovhelper({query, query_bullet}){
         // }
 
         console.log("KIA=====================");
-        
+        let newArr = [...ListRepo];
+        console.log("--------List repo array: ", ListRepo);
+        // console.log("copy old array: ", newArr);
+        newArr[0].left_leg = 0;
+        setListRepo(User(ListRepo));
+        // console.log("copy old array head: ", newArr[0].head);
     }
 
 
