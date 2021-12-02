@@ -112,9 +112,17 @@ function Tarkovhelper({query, query_bullet}){
     }
 
 
-    const testDoDamage = (part) => {
-        ListRepo[0].part = Math.max(ListRepo[0].part - BulletListRepo[0].damage, 0);
-        console.log("btn hited")
+    const testDoDamage = (part, health, damage) => {
+        console.log("==============\n", health, "\n======================")
+        console.log("==============\n", damage, "\n======================")
+        health = Math.max(health - damage, 0)
+
+        console.log("==============\n", health, "\n======================")
+        let newArr = [...ListRepo];
+        newArr[0].part = health;
+        setListRepo(newArr);
+
+        console.log("btn hit")
     }
 
     return(
@@ -181,6 +189,7 @@ function Tarkovhelper({query, query_bullet}){
                                 ListRepo = {ListRepo} 
                                 setListRepo = {setListRepo}
 
+                                testBtn = {testDoDamage}
                                 test = {test}
                                 ifDead = {ifDead}
                                 setIfDead = {setIfDead}
