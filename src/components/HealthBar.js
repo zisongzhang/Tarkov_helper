@@ -39,7 +39,7 @@ function HealthBar(props){
             
             <progress id="health" value={props.health} max={maxHealth}>{props.health} / {maxHealth}</progress>
             <p className="healthBar">{props.health} / {maxHealth}</p>
-            <button className="healthBarBtn" onClick={()=>props.testBtn(name, health, damage)}>{name}</button>
+            <button className="healthBarBtn" onClick={()=>props.testBtn(props.name, health, damage)}>{name}</button>
         </div>
     )
 }
