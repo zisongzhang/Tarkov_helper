@@ -30,18 +30,6 @@ function HealthBar(props){
 
     const checkDeath = (health) => {
         if((name === "head" || name === "thorax") && health <= 0){
-
-            // props.setIfDead(true);
-            // console.log("===================KIA================");
-            // const tmpList = [...props.ListRepo];
-            // tmpList[0].head = 0;
-            // tmpList[0].thorax = 0;
-            // tmpList[0].left_arm = 0;
-            // tmpList[0].left_leg = 0;
-            // tmpList[0].right_arm = 0;
-            // tmpList[0].right_leg = 0;
-            // props.setListRepo(tmpList);
-
             props.test();
         }
     }
@@ -51,8 +39,7 @@ function HealthBar(props){
             
             <progress id="health" value={props.health} max={maxHealth}>{props.health} / {maxHealth}</progress>
             <p className="healthBar">{props.health} / {maxHealth}</p>
-            <button className="healthBarBtn" onClick={()=>doDamage(name)}>{name}</button>
-            {/* {checkDeath(health)} */}
+            <button className="healthBarBtn" onClick={()=>props.testBtn(name)}>{name}</button>
         </div>
     )
 }

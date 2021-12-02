@@ -106,11 +106,16 @@ function Tarkovhelper({query, query_bullet}){
         let newArr = [...ListRepo];
         console.log("--------List repo array: ", ListRepo);
         // console.log("copy old array: ", newArr);
-        newArr[0].left_leg = 0;
+        newArr[0].thorax = 0;
         setListRepo(User(ListRepo));
         // console.log("copy old array head: ", newArr[0].head);
     }
 
+
+    const testDoDamage = (part) => {
+        ListRepo[0].part = Math.max(ListRepo[0].part - BulletListRepo[0].damage, 0);
+        console.log("btn hited")
+    }
 
     return(
     <div className = "mainpage">
@@ -153,12 +158,15 @@ function Tarkovhelper({query, query_bullet}){
                             <ul key={repo_list.id}>
                             <HealthBar left = "21" top = "0" 
                                 maxHealth = {maxListRepo[0].head} 
-                                health = {repo_list.head} 
                                 damage = {BulletListRepo[0].damage} 
-                                name="head" ListRepo = {ListRepo} 
+                                health = {repo_list.head} 
+                                name="head" 
+                                 
+                                 
+                                ListRepo = {ListRepo} 
                                 setListRepo = {setListRepo}
 
-
+                                testBtn = {testDoDamage}
                                 test = {test}
                                 ifDead = {ifDead}
                                 setIfDead = {setIfDead}
@@ -166,9 +174,10 @@ function Tarkovhelper({query, query_bullet}){
 
                             <HealthBar left = "14" top = "6" 
                                 maxHealth = {maxListRepo[0].thorax} 
-                                health ={repo_list.thorax} 
                                 damage = {BulletListRepo[0].damage} 
+                                health ={repo_list.thorax} 
                                 name="thorax" 
+
                                 ListRepo = {ListRepo} 
                                 setListRepo = {setListRepo}
 
@@ -177,7 +186,7 @@ function Tarkovhelper({query, query_bullet}){
                                 setIfDead = {setIfDead}
                                 />
 
-                            <HealthBar left = "14" top = "12" 
+                            {/* <HealthBar left = "14" top = "12" 
                                 maxHealth={maxListRepo[0].stomach} 
                                 health = {repo_list.stomach} 
                                 damage = {BulletListRepo[0].damage} 
@@ -240,7 +249,7 @@ function Tarkovhelper({query, query_bullet}){
                             test = {test}
                             ifDead = {ifDead}
                             setIfDead = {setIfDead}
-                            />
+                            /> */}
 
                             </ul>
                         ))}
