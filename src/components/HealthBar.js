@@ -23,23 +23,23 @@ function HealthBar(props){
         const tempListRepo = [...props.ListRepo];      // store to local(temp array)
         tempListRepo[0][part] = health;     // copy current health to local(temp array)
         props.setListRepo(tempListRepo);    //  copy local(temp array) to parent array(ListRepo)
-        checkDeath(health);
+        // checkDeath(health);
     }
 
     
 
-    const checkDeath = (health) => {
-        if((name === "head" || name === "thorax") && health <= 0){
-            props.test();
-        }
-    }
+    // const checkDeath = (health) => {
+    //     if((name === "head" || name === "thorax") && health <= 0){
+    //         props.test();
+    //     }
+    // }
 
     return (
         <div css = {healthBarContainer}>
             
             <progress id="health" value={props.health} max={maxHealth}>{props.health} / {maxHealth}</progress>
             <p className="healthBar">{props.health} / {maxHealth}</p>
-            <button className="healthBarBtn" onClick={()=>props.testBtn(props.name, health, damage)}>{name}</button>
+            <button className="healthBarBtn" onClick={()=>props.testBtn(props.name, props.health, props.damage)}>{name}</button>
         </div>
     )
 }
