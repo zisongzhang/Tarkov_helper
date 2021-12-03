@@ -6,6 +6,7 @@ import {css} from '@emotion/react';
 import HealthBar from './components/HealthBar.js';
 import '../src/tarkovhelper.css'
 import DataListInput from "react-datalist-input";
+import cloneDeep from 'lodash/cloneDeep';
 
 
 function Tarkovhelper({query, query_bullet}){
@@ -18,20 +19,16 @@ function Tarkovhelper({query, query_bullet}){
     const [isBulletLoading, setIsBulletLoading ] = useState(false);
     const history = useHistory();
     
-    
-
-
     useEffect(()=>{
         let ignore = false;
-        const controller = new AbortController();  // set controll
+
         async function fetchResult(){       //fetch character
             let responseBody = {};
             setIsLoading(true);
             try{
                 console.log("Query: ", query);
                 const res = await fetch(
-                    `http://localhost:3001/Characters/?q=${query}`,
-                    {signal: controller.signal}
+                    `http://localhost:3001/Characters/?q=${query}`
                 );
                 responseBody = await res.json();
             }catch(e){
@@ -46,18 +43,21 @@ function Tarkovhelper({query, query_bullet}){
                 console.log("responsebody: ", responseBody);
                 setIsLoading(false);
                 setListRepo(responseBody || []);
-                setMaxListRepo(responseBody || []);
+                // let tmpMaxArr = ListRepo.map(item => ({...item}));
+                // let copiedObject = JSON.parse(JSON.stringify(responseBody))
+                var tmpMaxArr = cloneDeep(responseBody);
+                console.log({tmpMaxArr})
+                setMaxListRepo(tmpMaxArr || []);
             }
         }
-        const bullet_controller = new AbortController();
+
         async function fetchBulletResult(){       //fetch character
             let responseBulletBody = {};
             setIsBulletLoading(true);
             try{
                 console.log("Bullet Query: ", query_bullet);
                 const res = await fetch(
-                    `http://localhost:3001/Bullets/?q=${query_bullet}`,
-                    {signal: controller.signal}
+                    `http://localhost:3001/Bullets/?q=${query_bullet}`
                 );
                 responseBulletBody = await res.json();
             }catch(e){
@@ -79,7 +79,6 @@ function Tarkovhelper({query, query_bullet}){
             fetchBulletResult();
         }
         return () => {
-            controller.abort();
             ignore = true;
             console.log("ListRepo", ListRepo);
         };
@@ -98,22 +97,37 @@ function Tarkovhelper({query, query_bullet}){
         }];
     }
 
+    async function handleReset(){
+        
+        try{
+            const res = await fetch(
+                `http://localhost:3001/Characters/?q=${query}`
+            );
+            const responseBody = await res.json();
+            setListRepo(responseBody);
+        }catch(e){
+            if (e instanceof DOMException) {
+                console.log("HTTP request aborted");
+              } else {
+                console.error(e);
+              }
+            }
+    }
+
 
     const doDamage = (part, health, damage) => {
         health = Math.max(health - damage, 0);
-        // console.log("doDamage==health: ", health);
         if((part === "head" || part === "thorax") && health <= 0){
             setListRepo(SetDead(ListRepo));
         }
         else{
-              // console.log("==============\n", health, "\n======================")
-        let newArr = [...ListRepo];
-        newArr[0][part] = health;
-        console.log("==============\n", newArr[0], "\n==================");
-        setListRepo(newArr);
-
-        console.log("btn hit");
+            let newArr = [...ListRepo];
+            newArr[0][part] = health;
+            setListRepo(newArr);
         }
+        console.log("btn hit");
+        console.log("ListRepo", ListRepo[0]);
+        console.log("maxListRepo", maxListRepo[0]);
     }
 
     return(
@@ -134,9 +148,9 @@ function Tarkovhelper({query, query_bullet}){
                 onSelect={onSelect}
                 /> */}
             <li><input placeholder="Bullets" value={inputBulletQuery} onChange={e => setinputBulletQuery(e.target.value)}/></li>
-            <li><button type = "submit" >Search</button></li>
-            
+            <li><button type="submit">Search</button></li>            
         </form>
+        <button onClick={handleReset} >Reset</button>
         {/* {console.log("damage: ", BulletListRepo[0].damage)} */}
         <div className = "humansysytem">
             <div>
