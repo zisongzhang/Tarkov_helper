@@ -21,14 +21,15 @@ function Tarkovhelper({query, query_bullet}){
     
     useEffect(()=>{
         let ignore = false;
-
+        const controller = new AbortController();  // set controll
         async function fetchResult(){       //fetch character
             let responseBody = {};
             setIsLoading(true);
             try{
                 console.log("Query: ", query);
                 const res = await fetch(
-                    `http://localhost:3001/Characters/?q=${query}`
+                    `http://localhost:3001/Characters/?q=${query}`,
+                    {signal: controller.signal}
                 );
                 responseBody = await res.json();
             }catch(e){
@@ -50,14 +51,15 @@ function Tarkovhelper({query, query_bullet}){
                 setMaxListRepo(tmpMaxArr || []);
             }
         }
-
+        const bullet_controller = new AbortController();
         async function fetchBulletResult(){       //fetch character
             let responseBulletBody = {};
             setIsBulletLoading(true);
             try{
                 console.log("Bullet Query: ", query_bullet);
                 const res = await fetch(
-                    `http://localhost:3001/Bullets/?q=${query_bullet}`
+                    `http://localhost:3001/Bullets/?q=${query_bullet}`,
+                    {signal: controller.signal}
                 );
                 responseBulletBody = await res.json();
             }catch(e){
@@ -79,6 +81,7 @@ function Tarkovhelper({query, query_bullet}){
             fetchBulletResult();
         }
         return () => {
+            controller.abort();
             ignore = true;
             console.log("ListRepo", ListRepo);
         };
@@ -98,7 +101,7 @@ function Tarkovhelper({query, query_bullet}){
     }
 
     async function handleReset(){
-        
+        // let newArr = [...maxListRepo];
         try{
             const res = await fetch(
                 `http://localhost:3001/Characters/?q=${query}`
@@ -111,7 +114,7 @@ function Tarkovhelper({query, query_bullet}){
               } else {
                 console.error(e);
               }
-            }
+        }
     }
 
 
