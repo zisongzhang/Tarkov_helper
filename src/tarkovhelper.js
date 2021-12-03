@@ -17,14 +17,7 @@ function Tarkovhelper({query, query_bullet}){
     const [isLoading, setIsLoading] = useState(false);
     const [isBulletLoading, setIsBulletLoading ] = useState(false);
     const history = useHistory();
-    // const [item, setItem] = useState();
-    // const onSelect = useCallback((selectedItem) => {
-    //     console.log("selectedItem", selectedItem);
-    //   }, []);
-
-    // check death
-    const [ifVital, setIfVital] = useState(true);
-    const [ifDead, setIfDead] = useState(false);
+    
     
 
 
@@ -106,9 +99,9 @@ function Tarkovhelper({query, query_bullet}){
     }
 
 
-    const testDoDamage = (part, health, damage) => {
+    const doDamage = (part, health, damage) => {
         health = Math.max(health - damage, 0);
-        // console.log("testDoDamage==health: ", health);
+        // console.log("doDamage==health: ", health);
         if((part === "head" || part === "thorax") && health <= 0){
             setListRepo(SetDead(ListRepo));
         }
@@ -166,93 +159,65 @@ function Tarkovhelper({query, query_bullet}){
                                 maxHealth = {maxListRepo[0].head} 
                                 damage = {BulletListRepo[0].damage} 
                                 health = {repo_list.head} 
-                                name="head" 
-                                 
-                                 
-                                ListRepo = {ListRepo} 
-                                setListRepo = {setListRepo}
-
-                                testBtn = {testDoDamage}
-                                ifDead = {ifDead}
-                                setIfDead = {setIfDead}
+                                handleDamage = {doDamage}
+                                partName = "HEAD"
+                                name="head"
                                 />
 
                             <HealthBar left = "14" top = "6" 
                                 maxHealth = {maxListRepo[0].thorax} 
                                 damage = {BulletListRepo[0].damage} 
                                 health ={repo_list.thorax} 
-                                name="thorax" 
-
-                                ListRepo = {ListRepo} 
-                                setListRepo = {setListRepo}
-
-                                testBtn = {testDoDamage}
-                                ifDead = {ifDead}
-                                setIfDead = {setIfDead}
+                                handleDamage = {doDamage}
+                                partName = "THORAX"
+                                name="thorax"
                                 />
 
                             <HealthBar left = "14" top = "12" 
                                 maxHealth={maxListRepo[0].stomach} 
-                                health = {repo_list.stomach} 
                                 damage = {BulletListRepo[0].damage} 
-                                name="stomach" 
-                                ListRepo = {ListRepo} 
-                                setListRepo = {setListRepo}
-
-                                testBtn = {testDoDamage}
-                                ifDead = {ifDead}
-                                setIfDead = {setIfDead}
+                                health = {repo_list.stomach} 
+                                handleDamage = {doDamage}
+                                partName = "STOMACH"
+                                name="stomach"
                                 />
 
                             <HealthBar left = "2.8" top = "12" 
                                 maxHealth = {maxListRepo[0].right_arm} 
-                                health = {repo_list.right_arm} 
                                 damage = {BulletListRepo[0].damage} 
-                                name = "right_arm" 
-                                ListRepo = {ListRepo} 
-                                setListRepo = {setListRepo}
-                                testBtn = {testDoDamage}
-                                ifDead = {ifDead}
-                                setIfDead = {setIfDead}
+                                health = {repo_list.right_arm} 
+                                handleDamage = {doDamage}
+                                partName = "RIGHT ARM"
+                                name = "right_arm"
                                 />
 
                             <HealthBar left = "5" top = "21.5" 
                                 maxHealth = {maxListRepo[0].right_leg} 
-                                health = {repo_list.right_leg} 
                                 damage = {BulletListRepo[0].damage} 
-                                name = "right_leg" 
-                                ListRepo = {ListRepo} 
-                                setListRepo = {setListRepo}
-                                
-                                testBtn = {testDoDamage}
-                                ifDead = {ifDead}
-                                setIfDead = {setIfDead}
+                                health = {repo_list.right_leg} 
+                                handleDamage = {doDamage}
+                                partName = "RIGHT LEG"
+                                name = "right_leg"
                                 />
 
                             <HealthBar left = "26" top = "12" 
                                 maxHealth = {maxListRepo[0].left_arm} 
-                                health = {repo_list.left_arm} 
                                 damage = {BulletListRepo[0].damage} 
-                                name = "left_arm" 
-                                ListRepo = {ListRepo} 
-                                setListRepo = {setListRepo}
+                                health = {repo_list.left_arm} 
+                                handleDamage = {doDamage}
+                                partName = "LEFT ARM"
+                                name = "left_arm"
                                 
-                                testBtn = {testDoDamage}
-                                ifDead = {ifDead}
-                                setIfDead = {setIfDead}
+                                
                             />
 
                             <HealthBar left = "23" top = "21.5" 
                                 maxHealth = {maxListRepo[0].left_leg} 
-                                health = {repo_list.left_leg} 
                                 damage = {BulletListRepo[0].damage} 
-                                name = "left_leg" 
-                                ListRepo = {ListRepo} 
-                                setListRepo = {setListRepo}
-                                
-                                testBtn = {testDoDamage}
-                                ifDead = {ifDead}
-                                setIfDead = {setIfDead}
+                                health = {repo_list.left_leg} 
+                                handleDamage = {doDamage}
+                                partName = "LEFT LEG"
+                                name = "left_leg"
                             />
 
                             </ul>
