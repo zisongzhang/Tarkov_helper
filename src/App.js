@@ -10,10 +10,6 @@ function useQueryString() {
   return queryString.parse(useLocation().search);
 }
 
-function useQueryString2() {
-  return queryString.parse(useLocation().search);
-}
-
 function App() {
 
   const homeContainer = css`
