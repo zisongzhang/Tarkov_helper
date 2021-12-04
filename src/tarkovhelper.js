@@ -172,6 +172,23 @@ function Tarkovhelper({query, query_bullet}){
         }
         console.log("==============\n");
 
+        for(var i = 0; i < dmgArr.length; i++){
+            let health = Math.max(ListRepo[0][dmgArr[i]] - sprDmg, 0);
+
+            if((dmgArr[i] === "head" || dmgArr[i] === "thorax") && health === 0){
+                console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>spread dead<<<<<<<<<<<<<<<<<<<<<<<<<<")
+                setListRepo(setDead(ListRepo));
+                return;
+            }
+
+
+            let newArr = [...ListRepo];
+            newArr[0][dmgArr[i]] = health;
+            setListRepo(newArr);
+
+
+
+        }
 
         console.log("sprDmg: ", sprDmg);
         console.log("dmgArr Len: ", dmgArr.length);
