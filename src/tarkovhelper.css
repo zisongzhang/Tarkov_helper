@@ -17,12 +17,12 @@
     border:solid black;
     border-radius: 5%;
     right: 20%;
-    top: 30%
+    top: 30%;
+    background-color: rgba(80, 80, 80, .8);
 }
 
 .inputBox input{
     width: 120px;
-    /* height: 30px; */
     margin: 5px;
     padding: 5px;
     border-radius: 30px;
@@ -30,7 +30,6 @@
 
 .inputBox button{
     width: 4rem;
-    /* height: 30px; */
     margin: 4px;
     padding: 5px;
     border-radius: 30px;
@@ -38,3 +37,10 @@
     color:#64443e;
 }
 
+.inputBox button:hover{
+    background-color: #dad9b5;
+}
+
+/* .inputBox button:active{
+    background-color: #aca37e;
+} */

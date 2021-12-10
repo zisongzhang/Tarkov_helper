@@ -16,6 +16,7 @@ function App() {
         padding: 0px;
         margin: 0px;
         border: 0;
+        background-image: url("./office.jpg");
     `;
 
   return (

@@ -8,7 +8,6 @@ import cloneDeep from 'lodash/cloneDeep';
 
 /*
 * background
-* title color and name
 */
 
 function Tarkovhelper({query, query_bullet}){
@@ -170,18 +169,13 @@ function Tarkovhelper({query, query_bullet}){
 
         var sprDmg = calculateSpreadDmg(dmgArr.length, partName, damage);   // calculate the spread damage
 
-        console.log("==============\n");
-        for(var i = 0; i < dmgArr.length; i++){
-            console.log(ListRepo[0][dmgArr[i]]);
-        }
-        console.log("==============\n");
-
         for(var i = 0; i < dmgArr.length; i++){
             let health = Math.max(ListRepo[0][dmgArr[i]] - sprDmg, 0);
 
             if((dmgArr[i] === "head" || dmgArr[i] === "thorax") && health === 0){
                 console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>spread dead<<<<<<<<<<<<<<<<<<<<<<<<<<")
                 setListRepo(setDead(ListRepo));
+                alert("KIA");
                 return;
             }
 
@@ -206,7 +200,6 @@ function Tarkovhelper({query, query_bullet}){
         }
 
         health = Math.max(health - damage, 0);  // calculate health
-
         
         if(ifBlackout === false){   // if not blackout, decrease health noramlly 
             let newArr = [...ListRepo];
@@ -219,6 +212,7 @@ function Tarkovhelper({query, query_bullet}){
 
         if((part === "head" || part === "thorax") && health <= 0){  // after doing all the calculation, check if player is dead
             setListRepo(setDead(ListRepo));                         // if so, set all health to 0
+            alert("KIA");
         }
         console.log("btn hit");
         console.log("ListRepo", ListRepo[0]);
@@ -227,8 +221,6 @@ function Tarkovhelper({query, query_bullet}){
     return(
     <div className = "mainpage">
         {/* {console.log("ListRepo Div", ListRepo)} */}
-
-        
         <form className="inputBox" onSubmit={(e)=>{
                 e.preventDefault();
                 history.push(`?character=${inputQuery}&bullet=${inputBulletQuery}`);
@@ -328,7 +320,7 @@ function Tarkovhelper({query, query_bullet}){
                             </ul>
                         ))}
                         </div>
-                    ):(<h1> loading</h1>)
+                    ):(<h1 className="firstLoading"> Enter character and bullet to search</h1>)
                     }
                 </div>
             )}
