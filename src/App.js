@@ -10,16 +10,13 @@ function useQueryString() {
   return queryString.parse(useLocation().search);
 }
 
-function useQueryString2() {
-  return queryString.parse(useLocation().search);
-}
-
 function App() {
 
   const homeContainer = css`
         padding: 0px;
         margin: 0px;
         border: 0;
+        background-image: url("./office.jpg");
     `;
 
   return (

@@ -1,15 +1,46 @@
-/* .mainpage{
-    position: relative;
-}*/
 .humansysytem{
-    position: relative;
+    position: absolute;
+    top:20%;
     width: 26rem;
     height: 38.2rem;
     background-image: url("./images/pic3.png");
     background-repeat: no-repeat;
     left: 10rem;
 }
-/* .characterImage{
-    position: relative;
-    left: 10rem;
-}  */
+
+.inputBox{
+    display: inline-block;
+    position: absolute;
+    align-items: center;
+    width: 9rem;
+    padding: 2rem;
+    border:solid black;
+    border-radius: 5%;
+    right: 20%;
+    top: 30%;
+    background-color: rgba(80, 80, 80, .8);
+}
+
+.inputBox input{
+    width: 120px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 30px;
+}
+
+.inputBox button{
+    width: 4rem;
+    margin: 4px;
+    padding: 5px;
+    border-radius: 30px;
+    background-color: #b0a377;
+    color:#64443e;
+}
+
+.inputBox button:hover{
+    background-color: #dad9b5;
+}
+
+/* .inputBox button:active{
+    background-color: #aca37e;
+} */

@@ -22,7 +22,7 @@ const Header = () => {
 
     return (
         <div className="header">
-            <img src="/OSUicon.png" alt=""/>
+            <img src="/tarkov_icon.png" alt="" href="#"/>
             <a className="headerLink" href="https://escapefromtarkov.fandom.com/wiki/Escape_from_Tarkov_Wiki">Wiki</a>
 
             <div className="dropDowncontainer"
@@ -30,25 +30,15 @@ const Header = () => {
                     onMouseOver={() => setIfDisplay(true)}
                     onMouseLeave={() => handleOnMouseLeaveDelay()}
                     >
-                <button 
+                <a 
                     className="dropDownBtn"
                     onClick={handleDisplay}
-                    // onMouseEnter={() => handleDisplay()}
-                    // onMouseLeave={() => handleDisplay()}
-                    // onMouseEnter={() => setIfDisplay(true)}
-                    // onMouseOver={() => setIfDisplay(true)}
-                    // onMouseLeave={() => handleOnMouseLeaveDelay()}
                     open={ifDisplay}
                     >
                     Streamer
-                </button>
+                </a>
                 { ifDisplay && (
-                <div className="dropdownMenu"
-                    //  onMouseEnter={() => setIfDisplay(true)}
-                    //  onMouseOver={() => setIfDisplay(true)}
-                    //  onMouseLeave={() => handleOnMouseLeaveDelay()}
-
-                >
+                <div className="dropdownMenu">
                     <a className="headerLink" href="https://www.youtube.com/c/AquaFPS">AquaFPS</a>
                     <a className="headerLink" href="https://www.youtube.com/c/LVNDMARK">LVNDMARK</a>
                 </div>
