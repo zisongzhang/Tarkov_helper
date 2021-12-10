@@ -6,6 +6,10 @@ import HealthBar from './components/HealthBar.js';
 import '../src/tarkovhelper.css'
 import cloneDeep from 'lodash/cloneDeep';
 
+/*
+* background
+* title color and name
+*/
 
 function Tarkovhelper({query, query_bullet}){
     const [inputQuery, setinputQuery] = useState(query || "");
@@ -181,13 +185,9 @@ function Tarkovhelper({query, query_bullet}){
                 return;
             }
 
-
             let newArr = [...ListRepo];
             newArr[0][dmgArr[i]] = health;
             setListRepo(newArr);
-
-
-
         }
 
         console.log("sprDmg: ", sprDmg);
@@ -227,12 +227,13 @@ function Tarkovhelper({query, query_bullet}){
     return(
     <div className = "mainpage">
         {/* {console.log("ListRepo Div", ListRepo)} */}
-        <form onSubmit={(e)=>{
+
+        
+        <form className="inputBox" onSubmit={(e)=>{
                 e.preventDefault();
                 history.push(`?character=${inputQuery}&bullet=${inputBulletQuery}`);
-                // history.push(`?bullet=${inputBulletQuery}`);
         }}>
-            <li><input placeholder="Charaters" value={inputQuery} onChange={e => setinputQuery(e.target.value)}/></li>
+            <input placeholder="Charaters" value={inputQuery} onChange={e => setinputQuery(e.target.value)}/>
                 {/* <option name="male"> male</option> */}
                 {/* </select>
                 </li> */}
@@ -241,10 +242,10 @@ function Tarkovhelper({query, query_bullet}){
                 items={"iphut","hhhh"}
                 onSelect={onSelect}
                 /> */}
-            <li><input placeholder="Bullets" value={inputBulletQuery} onChange={e => setinputBulletQuery(e.target.value)}/></li>
-            <li><button type="submit">Search</button></li>            
+            <input placeholder="Bullets" value={inputBulletQuery} onChange={e => setinputBulletQuery(e.target.value)}/>
+            <button type="submit">Search</button>
+            <button onClick={handleReset} >Reset</button>
         </form>
-        <button onClick={handleReset} >Reset</button>
         <div className = "humansysytem">
             <div>
             {/* {console.log("isLoading: ", isLoading)} */}

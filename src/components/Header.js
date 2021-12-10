@@ -33,22 +33,12 @@ const Header = () => {
                 <button 
                     className="dropDownBtn"
                     onClick={handleDisplay}
-                    // onMouseEnter={() => handleDisplay()}
-                    // onMouseLeave={() => handleDisplay()}
-                    // onMouseEnter={() => setIfDisplay(true)}
-                    // onMouseOver={() => setIfDisplay(true)}
-                    // onMouseLeave={() => handleOnMouseLeaveDelay()}
                     open={ifDisplay}
                     >
                     Streamer
                 </button>
                 { ifDisplay && (
-                <div className="dropdownMenu"
-                    //  onMouseEnter={() => setIfDisplay(true)}
-                    //  onMouseOver={() => setIfDisplay(true)}
-                    //  onMouseLeave={() => handleOnMouseLeaveDelay()}
-
-                >
+                <div className="dropdownMenu">
                     <a className="headerLink" href="https://www.youtube.com/c/AquaFPS">AquaFPS</a>
                     <a className="headerLink" href="https://www.youtube.com/c/LVNDMARK">LVNDMARK</a>
                 </div>
